@@ -7,7 +7,6 @@ import * as _ from 'lodash'
 
 const getUsers = catchAsync(async (req, res) => {
   let filter: any = _.pick(req.query, ['name', 'email']);
-  console.log(filter)
   filter = Object.fromEntries(
     Object.entries(filter).map(([key, value]) => {
       return [key, new RegExp(String(value), 'i')];

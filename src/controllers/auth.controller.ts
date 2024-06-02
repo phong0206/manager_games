@@ -45,7 +45,6 @@ const sendVerificationEmail = catchAsync(async (req: Request, res: Response) => 
   }
   const user = req.user as IUser
   const verifyEmailToken = await tokenService.generateVerifyEmailToken(req.user);
-  console.log(verifyEmailToken)
   emailService.sendVerificationEmail(user.email, verifyEmailToken);
   res.status(httpStatus.NO_CONTENT).send("Send mail successful");
 });

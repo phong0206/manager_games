@@ -2,6 +2,7 @@ import express from 'express';
 import userRoute from './user.route';
 import authRoute from './auth.route';
 import gameRoute from './game.route'
+import reviewRoute from './review.route'
 const router = express.Router();
 
 interface Route {
@@ -19,6 +20,9 @@ const defaultRoutes: Route[] = [
   },{
     path: '/games',
     route: gameRoute,
+  }, {
+    path: '/reviews',
+    route: reviewRoute,
   }
 ];
 

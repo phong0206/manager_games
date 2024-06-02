@@ -1,5 +1,6 @@
 import mongoose, { Document, Model, Schema } from 'mongoose';
 import { toJSON } from './plugins';
+import mongoosePaginate from 'mongoose-paginate-v2';
 
 interface IReview extends Document {
   review: string;
@@ -41,10 +42,11 @@ const reviewSchema: Schema<IReview> = new mongoose.Schema(
 
 // add plugin that converts mongoose to json
 reviewSchema.plugin(toJSON);
+reviewSchema.plugin(mongoosePaginate);
 
 /**
  * @typedef Review
  */
-const Review: Model<IReview> = mongoose.model<IReview>('Review', reviewSchema);
+const Review = mongoose.model<IReview, any>('Review', reviewSchema);
 
 export default Review;
